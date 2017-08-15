@@ -1,9 +1,13 @@
 package edu.umich.verdict.redshift;
 
+
+import java.sql.ResultSet;
+
 import edu.umich.verdict.VerdictConf;
 import edu.umich.verdict.VerdictContext;
 import edu.umich.verdict.VerdictJDBCContext;
 import edu.umich.verdict.exceptions.VerdictException;
+import edu.umich.verdict.util.ResultSetConversion;
 
 public class RedshiftThroughVerdictTest {
 
@@ -34,41 +38,41 @@ public class RedshiftThroughVerdictTest {
         
         // ======== test sample creation ========  
         
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery("create uniform sample of tpch1g.lineitem;");
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\ncreate uniform sample of tpch1g.lineitem;");
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        vc.executeJdbcQuery("create uniform sample of tpch1g.lineitem;");
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\ncreate uniform sample of tpch1g.lineitem;");
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
 //
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery("create stratified sample of tpch1g.lineitem on l_suppkey;");
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\ncreate stratified sample of tpch1g.lineitem on l_suppkey;");
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        vc.executeJdbcQuery("create stratified sample of tpch1g.lineitem on l_suppkey;");
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\ncreate stratified sample of tpch1g.lineitem on l_suppkey;");
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
 //        
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery("create universe sample of tpch1g.lineitem on l_orderkey;");
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\ncreate universe sample of tpch1g.lineitem on l_orderkey;");
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        vc.executeJdbcQuery("create universe sample of tpch1g.lineitem on l_orderkey;");
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\ncreate universe sample of tpch1g.lineitem on l_orderkey;");
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
 //        
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery("create universe sample of tpch1g.lineitem on l_partkey;");
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\ncreate universe sample of tpch1g.lineitem on l_partkey;");
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        vc.executeJdbcQuery("create universe sample of tpch1g.lineitem on l_partkey;");
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\ncreate universe sample of tpch1g.lineitem on l_partkey;");
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
 //        
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery("create uniform sample of tpch1g.orders;");
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\ncreate uniform sample of tpch1g.orders;");
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        vc.executeJdbcQuery("create uniform sample of tpch1g.orders;");
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\ncreate uniform sample of tpch1g.orders;");
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
 //
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery("create universe sample of tpch1g.o_orderkey;");
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\ncreate universe sample of tpch1g.o_orderkey;");
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        vc.executeJdbcQuery("create universe sample of tpch1g.o_orderkey;");
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\ncreate universe sample of tpch1g.o_orderkey;");
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
         
         // ======== test Queries ========
         String q0 = "select count(*) from tpch1g.lineitem;";
@@ -82,56 +86,63 @@ public class RedshiftThroughVerdictTest {
         // 	======== test Q0 ========
         
 //        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery(q0);
+//        ResultSet rs = vc.executeJdbcQuery(q0);
 //        endTime = System.currentTimeMillis();
 //        System.out.println("\n\n" + q0);
 //        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
         
         // ======== test Q1 ========
         
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery(q1);
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\n" + q1);
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        ResultSet rs = vc.executeJdbcQuery(q1);
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\n" + q1);
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        ResultSetConversion.printResultSet(rs);
         
         // ======== test Q9 ========
         
         startTime = System.currentTimeMillis();        
-        vc.executeJdbcQuery(q9);
+        rs = vc.executeJdbcQuery(q9);
         endTime = System.currentTimeMillis();
         System.out.println("\n\n" + q9);
         System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        ResultSetConversion.printResultSet(rs);
+        
  
         // ======== test Q12 ========
         
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery(q12);
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\n" + q12);
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        rs = vc.executeJdbcQuery(q12);
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\n" + q12);
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        ResultSetConversion.printResultSet(rs);
         
         // ======== test Q15 ========
         
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery(q15);
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\n" + q15);
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        rs = vc.executeJdbcQuery(q15);
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\n" + q15);
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+//        ResultSetConversion.printResultSet(rs);
               
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery(q15_check);
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\n" + q15_check);
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        rs = vc.executeJdbcQuery(q15_check);
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\n" + q15_check);
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        ResultSetConversion.printResultSet(rs);
         
         // ======== test Q17 ========
         
-//        startTime = System.currentTimeMillis();        
-//        vc.executeJdbcQuery(q17);
-//        endTime = System.currentTimeMillis();
-//        System.out.println("\n\n" + q17);
-//        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        startTime = System.currentTimeMillis();        
+        rs = vc.executeJdbcQuery(q17);
+        endTime = System.currentTimeMillis();
+        System.out.println("\n\n" + q17);
+        System.out.println("That took " + (endTime - startTime) + " milliseconds \n\n");
+        ResultSetConversion.printResultSet(rs);
                 
         vc.destroy();
     }
