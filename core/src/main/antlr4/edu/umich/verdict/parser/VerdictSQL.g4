@@ -631,7 +631,7 @@ extract_unit
 
 unary_manipulation_function
     : function_name=(ROUND | FLOOR | CEIL | EXP | LN | LOG10 | LOG2 | SIN | COS | TAN | SIGN | RAND | FNV_HASH
-     | ABS | STDDEV | SQRT | MD5 | CRC32 | YEAR )
+     | ABS | STDDEV | SQRT | MD5 | CRC32 | YEAR | LOWER)
       '(' expression ')'
     | function_name=CAST '(' cast_as_expression ')'    
     ;
@@ -1216,6 +1216,7 @@ LOG2:                            L O G '2';
 LOG10:                           L O G '10';
 LOGIN:                           L O G I N;
 LOOP:                            L O O P;
+LOWER:                           L O W E R;
 MARK:                            M A R K;
 MAX:                             M A X;
 MD5:                             M D '5';

@@ -94,5 +94,12 @@ public class ExprTest {
         Expr b = Expr.from(dummyContext, "pmod(crc32(user_id), 100)");
         assertEquals(b.toString(), "pmod(crc32(`user_id`), 100)");
     }
+    
+    @Test
+    public void hiveLowerTest() {
+        Expr a = Expr.from(dummyContext, "lower(a)");
+//        System.out.println(a.toString());
+        assertEquals(a.toString(), "lower(`a`)");
+    }
 
 }
